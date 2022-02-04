@@ -1,6 +1,6 @@
 - 👋 Hi, I’m @Sagaichi
 - 👀 I’m interested in powershell and ALL things IT
-- 🌱 I’m currently learning how to make powershell scripts and Microsoft Azure
+- 🌱 I’m currently learning how to make powershell scripts and I'm learning Microsoft Azure :D
 
 <!---
 Sagaichi/Sagaichi is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
