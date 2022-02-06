@@ -37,7 +37,7 @@ Clear-Host
 
     Exit.) Exits the script (Enter Q).
 
-    Choice: "
+    Choice"
     )
 
     #Quits the script
