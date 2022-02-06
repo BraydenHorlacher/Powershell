@@ -1,3 +1,11 @@
+"This script bulk Creates Users from a .CSV file in your Active Directory"
+
+pause
+
+$Continue = Read-Host -Prompt "Do you want to continue running this script?"
+if ($continue -eq "Y" -eq "y") {$null}
+if ($Continue -eq "N" -eq "n") {Exit}
+
 #Imports the Active Directory to allow the script to run
 #requires -module ActiveDirectory   
 
