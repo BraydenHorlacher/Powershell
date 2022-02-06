@@ -1,5 +1,9 @@
 #Writes what the script is and does
 
+$admin = Read-Host -prompt "Do you want to run this as an elevated window?(Installations will require admin rights e.g. script 5)"
+if ($admin -eq "Y" -eq "y") {if (-Not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {if ([int](Get-CimInstance -Class Win32_OperatingSystem | Select-Object -ExpandProperty BuildNumber) -ge 6000) {Start-Process PowerShell -Verb RunAs -ArgumentList "-NoProfile -ExecutionPolicy Bypass -Command `"cd '$pwd'; & '$PSCommandPath';`"";Exit;}}}
+if ($admin -eq "N" -eq "n") {$null}
+
 Clear-Host
 
 {
