@@ -1,4 +1,11 @@
-﻿#Imports the Active Directory to allow the script to run
+﻿"This script bulk changes Users passwords from a .CSV file in your Active Directory"
+""
+$Continue = Read-Host -Prompt "Do you want to continue running this script?"
+if ($continue -eq "Y" -eq "y") {$null; Clear-Host}
+if ($Continue -eq "N" -eq "n") {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Sagaichi/Powershell/main/AutomationScripts.ps1'))}
+
+
+#Imports the Active Directory to allow the script to run
 #requires -module ActiveDirectory   
 
 # Open file dialog

@@ -1,16 +1,27 @@
-﻿[CmdletBinding()]
-Param ( )
-[string] $OU = read-host -prompt "Please enter the OU (e.g. OU=Left,OU=Users,OU=_DISABLED,DC=internal,DC=rosehill-college,DC=co,DC=nz)"; 
-$Confirm = $True #Change this to $False if you don't need to check off each user
+﻿"This script bulk Creates Users from a .CSV file in your Active Directory"
+""
+$Continue = Read-Host -Prompt "Do you want to continue running this script?"
+if ($continue -eq "Y" -eq "y") {$null; Clear-Host}
+if ($Continue -eq "N" -eq "n") {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Sagaichi/Powershell/main/AutomationScripts.ps1'))}
 
-$ExceptGroup = "Domain Users"
+[string] $OU = read-host -prompt "Please enter the OU (e.g. OU=Left,OU=Users,OU=_DISABLED,DC=internal,DC=rosehill-college,DC=co,DC=nz)"; 
+$Confirm = Read-Host -Prompt "Do you want to manually check off each group removal for the users in this OU?"
+if ($Confirm -eq "y" -eq "Y"){$true}
+if ($Confirm -eq "n" -eq "N"){$False}
+
+
+$ExceptGroup = read-host -Prompt "What group do you want to exclude? (e.g. Domain Users)"
 
 Import-Module ActiveDirectory
 
 Write-Host Organizational Unit: $OU
 Write-Host Confirm: $Confirm
 
-$users = Get-ADUser -SearchBase $OU -Filter {Enabled -eq $false}
+$enabled = Read-Host -Prompt "Do you want to remove the user groups from Enabled or Disabled users?(write 'Enabled, or Disabled')"
+if ($Enabled -eq "Enabled" -eq "enabled"){$True}
+if ($Enabled -eq "Disabled" -eq "disabled"){$False}
+
+$users = Get-ADUser -SearchBase $OU -Filter {Enabled -eq $Enabled}
 
 foreach ($user in $users) {
     $UserDN = $user.DistinguishedName
