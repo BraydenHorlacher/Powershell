@@ -1,3 +1,4 @@
+Clear-Host
 Write-Output 'Hello World!'
 Pause
 
