@@ -1,3 +1,9 @@
+"This script Creates Users in your Active Directory"
+""
+$Continue = Read-Host -Prompt "Do you want to continue running this script?"
+if ($continue -eq "Y" -eq "y") {$null; Clear-Host}
+if ($Continue -eq "N" -eq "n") {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Sagaichi/Powershell/main/AutomationScripts.ps1'))}
+
 #Imports the Active Directory to allow the script to run
 #requires -module ActiveDirectory   
 
@@ -20,7 +26,7 @@ $Initial = Read-Host -Prompt "Please enter the FIRST Initial of the users first 
 $Domain = Read-Host -Prompt "Please enter the domain name you would like to user (e.g. Nessie.local)";
 
 #Specify what OU to place the new user into
-$OU = Read-Host -Prompt "Please copy and paste the OU here (e.g. OU=Users,OU=Nessie,DC=Nessie,DC=local)";
+$OU = Read-Host -Prompt "Please copy and paste the OU here (e.g. OU=Users,OU=Nessie,DC=Nessie,DC=co,DC=nz)";
 
 #Check for null password and use default
 if($password = "") {
