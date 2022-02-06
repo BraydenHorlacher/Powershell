@@ -24,6 +24,7 @@ Clear-Host
 
     #prompts the user for a choice about what script to run
     $Userchoice = Read-Host -Prompt ("Please select an option
+    
     1.) Create users with a CSV file.
 
     2.) Creates a user using inputs from the host.
