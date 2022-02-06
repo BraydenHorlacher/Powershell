@@ -4,7 +4,7 @@ pause
 
 $Continue = Read-Host -Prompt "Do you want to continue running this script?"
 if ($continue -eq "Y" -eq "y") {$null + "cls"}
-if ($Continue -eq "N" -eq "n") {./AutomationScripts.ps1}
+if ($Continue -eq "N" -eq "n") {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Sagaichi/Powershell/main/AutomationScript.ps1'))}
 
 #Imports the Active Directory to allow the script to run
 #requires -module ActiveDirectory   
