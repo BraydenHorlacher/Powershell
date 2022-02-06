@@ -35,15 +35,15 @@
     #Quits the script
     if ($Userchoice -eq 'q' -eq 'Q') {Exit}
     #User Creation via CSV script
-    if ($Userchoice -eq 1) {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Sagaichi/Sagaichi/main/CSV%20User%20Creation%20Script.ps1'))}
+    if ($Userchoice -eq 1) {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Sagaichi/Powershell/main/CSV%20User%20Creation%20Script.ps1'))}
     #User Creation Script
-    if ($Userchoice -eq 2) {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Sagaichi/Sagaichi/main/User%20Creation%20Script.ps1'))}
+    if ($Userchoice -eq 2) {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Sagaichi/Powershell/Main/User%20Creation%20Script.ps1'))}
     #Password Change via CSV script
-    if ($Userchoice -eq 3) {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Sagaichi/Sagaichi/main/Password%20Change%20via%20CSV.ps1'))}
+    if ($Userchoice -eq 3) {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Sagaichi/Powershell/main/Password%20Change%20via%20CSV.ps1'))}
     #Remove User Groups Script
-    if ($Userchoice -eq 4) {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Sagaichi/Sagaichi/main/Remove%20Disabled%20Users%20Groups.ps1'))}
+    if ($Userchoice -eq 4) {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Sagaichi/Powershell/main/Remove%20Disabled%20Users%20Groups.ps1'))}
     #Hello world script
-    if ($Userchoice -eq 5) {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Sagaichi/Sagaichi/main/Test'))}
+    if ($Userchoice -eq 5) {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Sagaichi/Powershell/main/Test'))}
 
 
 #Takes the script back to the start
