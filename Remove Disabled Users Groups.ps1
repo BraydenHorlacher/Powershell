@@ -1,4 +1,4 @@
-﻿"This script bulk Creates Users from a .CSV file in your Active Directory"
+﻿"This script removes usergroups from enabled or disabled users in your Active Directory"
 ""
 $Continue = Read-Host -Prompt "Do you want to continue running this script?"
 if ($continue -eq "Y" -eq "y") {$null; Clear-Host}
