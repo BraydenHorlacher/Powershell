@@ -48,7 +48,7 @@
 
 #Takes the script back to the start
 $Loop = Read-Host -Prompt ("Would you like to run another script? Y or N")
-if ($Loop -eq "Y" -eq "y") {./AutomationScripts.ps1}
+if ($Loop -eq "Y" -eq "y") {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Sagaichi/Powershell/main/AutomationScripts.ps1'))}
 if ($Loop -eq "N" -eq "n") {Exit}
 
 pause
