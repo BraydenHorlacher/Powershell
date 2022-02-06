@@ -7,6 +7,7 @@
 # -windowstyle hidden C:\Scripts\Automated_Windows_Updates.ps1
 
 # Script to automatically install Windows updates
+Clear-Host
 
 $admin = Read-Host -prompt "Do you want to run this as an elevated window? Y or N"
 if ($admin -eq "Y" -eq "y") {if (-Not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {if ([int](Get-CimInstance -Class Win32_OperatingSystem | Select-Object -ExpandProperty BuildNumber) -ge 6000) {Start-Process PowerShell -Verb RunAs -ArgumentList "-NoProfile -ExecutionPolicy Bypass -Command `"cd '$pwd'; & '$PSCommandPath';`"";Exit;}}}
@@ -14,7 +15,6 @@ if ($admin -eq "N" -eq "n") {$null}
 
 "This script runs and installs windows updates
 "
-
 $Continue = Read-Host -Prompt "Do you want to continue running this script?"
 if ($continue -eq "Y" -eq "y") {$null; Clear-Host}
 if ($Continue -eq "N" -eq "n") {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Sagaichi/Powershell/main/AutomationScripts.ps1'))}

@@ -1,3 +1,4 @@
+Clear-Host
 "This script Creates Users in your Active Directory"
 ""
 $Continue = Read-Host -Prompt "Do you want to continue running this script?"

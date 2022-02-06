@@ -1,4 +1,5 @@
-﻿"This script removes usergroups from enabled or disabled users in your Active Directory"
+﻿Clear-Host
+"This script removes usergroups from enabled or disabled users in your Active Directory"
 ""
 $Continue = Read-Host -Prompt "Do you want to continue running this script?"
 if ($continue -eq "Y" -eq "y") {$null; Clear-Host}

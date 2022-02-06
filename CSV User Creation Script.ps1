@@ -1,3 +1,4 @@
+Clear-Host
 "This script bulk Creates Users from a .CSV file in your Active Directory"
 ""
 $Continue = Read-Host -Prompt "Do you want to continue running this script?"
