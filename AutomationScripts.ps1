@@ -1,4 +1,5 @@
 #Writes what the script is and does
+Clear-Host
 {
 ""
 "========================================"
