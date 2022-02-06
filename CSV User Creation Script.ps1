@@ -3,7 +3,7 @@
 pause
 
 $Continue = Read-Host -Prompt "Do you want to continue running this script?"
-if ($continue -eq "Y" -eq "y") {$null}
+if ($continue -eq "Y" -eq "y") {$null + "cls"}
 if ($Continue -eq "N" -eq "n") {Exit}
 
 #Imports the Active Directory to allow the script to run
