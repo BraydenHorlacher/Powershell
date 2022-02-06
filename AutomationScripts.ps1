@@ -46,8 +46,7 @@ Clear-Host
     #Remove User Groups Script
     if ($Userchoice -eq 4) {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Sagaichi/Powershell/main/Remove%20Disabled%20Users%20Groups.ps1'))}
     #Hello world script
-    if ($Userchoice -eq 5) {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Sagaichi/Powershell/main/Test'))}
-
+    if ($Userchoice -eq 5) {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Sagaichi/Powershell/main/AutomaticWindowsUpdates'))}
 
 #Takes the script back to the start
 $Loop = Read-Host -Prompt ("Would you like to run another script? Y or N")
