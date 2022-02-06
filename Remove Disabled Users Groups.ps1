@@ -9,7 +9,6 @@ $Confirm = Read-Host -Prompt "Do you want to manually check off each group remov
 if ($Confirm -eq "y" -eq "Y"){$true}
 if ($Confirm -eq "n" -eq "N"){$False}
 
-
 $ExceptGroup = read-host -Prompt "What group do you want to exclude? (e.g. Domain Users)"
 
 Import-Module ActiveDirectory
