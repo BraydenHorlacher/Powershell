@@ -17,11 +17,8 @@ Import-Module ActiveDirectory
 Write-Host Organizational Unit: $OU
 Write-Host Confirm: $Confirm
 
-$enabled = Read-Host -Prompt "Do you want to remove the user groups from Enabled or Disabled users?(write 'Enabled, or Disabled')"
-if ($Enabled -eq "Enabled" -eq "enabled"){$True}
-if ($Enabled -eq "Disabled" -eq "disabled"){$False}
 
-$users = Get-ADUser -SearchBase $OU -Filter {Enabled -eq $Enabled}
+$users = Get-ADUser -SearchBase $OU -Filter {Enabled -eq $False}
 
 foreach ($user in $users) {
     $UserDN = $user.DistinguishedName
