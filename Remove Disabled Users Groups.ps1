@@ -17,7 +17,6 @@ Import-Module ActiveDirectory
 Write-Host Organizational Unit: $OU
 Write-Host Confirm: $Confirm
 
-
 $users = Get-ADUser -SearchBase $OU -Filter {Enabled -eq $False}
 
 foreach ($user in $users) {
@@ -29,3 +28,5 @@ foreach ($user in $users) {
         }
     }
 }
+
+pause
