@@ -1,7 +1,8 @@
 Clear-Host
 
 "This script is not currently working"
-pause "press enter to return to the main script"
+"press enter to return to the main script"
+pause 
 
 Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Sagaichi/Powershell/main/AutomationScripts.ps1'))
 
