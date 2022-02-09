@@ -30,7 +30,7 @@ I AM NOT LIABLE FOR ANY ISSUES CREATED BY THESE SCRIPTS! USE AT YOUR OWN RISK!
 
     5.) Auto Windows update script (Requires Admin powershell).
 
-    6.) Hellow World Script (Does nothing, tests to make sure that the script itself is working)
+    6.) Hello World Script (Says Hello to the WORLD!)
 
     Exit.) Exits the script (Enter Q).
     
