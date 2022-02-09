@@ -16,6 +16,7 @@ to create issues in your AD environment
 I AM NOT LIABLE FOR ANY ISSUES CREATED BY THESE SCRIPTS! USE AT YOUR OWN RISK!
 "
 }
+{
 
     #prompts the user for a choice about what script to run
     $Userchoice = Read-Host -Prompt ("Please select an option
@@ -68,6 +69,7 @@ I AM NOT LIABLE FOR ANY ISSUES CREATED BY THESE SCRIPTS! USE AT YOUR OWN RISK!
     "}
 
 
+}
 #Takes the script back to the start
 $Loop = Read-Host -Prompt ("Would you like to run another script? Y or N")
 if ($Loop -eq "Y" -eq "y") {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Sagaichi/Powershell/main/AutomationScripts.ps1'))}
