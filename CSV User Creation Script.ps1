@@ -1,4 +1,11 @@
 Clear-Host
+
+"This script is not currently working"
+pause "press enter to return to the main script"
+
+Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Sagaichi/Powershell/main/AutomationScripts.ps1'))
+
+<#
 "This script bulk Creates Users from a .CSV file in your Active Directory"
 ""
 $Continue = Read-Host -Prompt "Do you want to continue running this script?"
@@ -74,3 +81,4 @@ foreach($user in $CSV) {
 }
 
 Read-Host -Prompt "Script complete... Press enter to exit."
+#>
