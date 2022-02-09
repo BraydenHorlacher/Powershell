@@ -32,11 +32,13 @@ if ([System.IO.File]::Exists($CSVFile)) {
     Exit
 }
 
+$Domain = Read-Host -Prompt "Enter the domain name without the @ symbol (This is for the email address)"
+
 # Lets iterate over each line in the CSV file
 foreach($user in $CSV) {
 
     # Password
-    $SecurePassword = ConvertTo-SecureString "$($user.'First Name'[0])$($user.'Last Name')$($user.'Employee ID')!@#" -AsPlainText -Force
+    $SecurePassword = ConvertTo-SecureString "Pass2022" -AsPlainText -Force
 
     # Format their username
     $Username = "$($user.'First Name').$($user.'Last Name')"
@@ -48,7 +50,7 @@ foreach($user in $CSV) {
                 -Surname $user.'Last Name' `
                 -UserPrincipalName $Username `
                 -SamAccountName $Username `
-                -EmailAddress $user'@rc.school.nz' `
+                -EmailAddress $user'@'$Domain `
                 -Description $user.Description `
                 -OfficePhone $user.'Office Phone' `
                 -Path "$($user.'Organizational Unit')" `
