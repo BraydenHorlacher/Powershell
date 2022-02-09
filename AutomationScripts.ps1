@@ -18,7 +18,7 @@ I AM NOT LIABLE FOR ANY ISSUES CREATED BY THESE SCRIPTS! USE AT YOUR OWN RISK!
 }
 
     #prompts the user for a choice about what script to run
-    $Userchoice = Read-Host -Prompt ("Please select an option
+    $Userchoice = Read-Host -Prompt "Please select an option
 
     1.) Create users with a CSV file.
 
@@ -35,8 +35,8 @@ I AM NOT LIABLE FOR ANY ISSUES CREATED BY THESE SCRIPTS! USE AT YOUR OWN RISK!
     Exit.) Exits the script (Enter Q).
     
     Choice"
-    )
 
+    
     #Quits the script
     if ($Userchoice -eq 'q' -eq 'Q') {Exit}
     #User Creation via CSV script
@@ -51,6 +51,7 @@ I AM NOT LIABLE FOR ANY ISSUES CREATED BY THESE SCRIPTS! USE AT YOUR OWN RISK!
     if ($Userchoice -eq 5) {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Sagaichi/Powershell/main/AutomaticWindowsUpdates'))}
     #Test Script
     if ($Userchoice -eq 6) {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Sagaichi/Powershell/main/Test?token=GHSAT0AAAAAABRJFR6ADJNJJDJECO33ZPP4YQAIZNA'))}
+
 
 #Takes the script back to the start
 $Loop = Read-Host -Prompt ("Would you like to run another script? Y or N")
