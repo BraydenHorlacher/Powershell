@@ -6,6 +6,7 @@ if ($continue -eq "Y" -eq "y") {$null; Clear-Host}
 if ($Continue -eq "N" -eq "n") {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Sagaichi/Powershell/main/AutomationScripts.ps1'))}
 
 [string] $OU = read-host -prompt "Please enter the OU (e.g. OU=Left,OU=Users,OU=_DISABLED,DC=internal,DC=rosehill-college,DC=co,DC=nz)"; 
+$ExceptGroup = read-host -Prompt "What group do you want to exclude? (e.g. Domain Users)";
 $Confirm = Read-Host -Prompt "Do you want to manually check off each group removal for the users in this OU?"
 if ($Confirm -eq "y" -eq "Y"){Remove-ADGroupMember -identity $_.name -Member $UserDN -Confirm:$True}
 if ($Confirm -eq "n" -eq "N"){
@@ -19,8 +20,6 @@ if ($Confirm -eq "n" -eq "N"){
     }
 }
 }
-
-$ExceptGroup = read-host -Prompt "What group do you want to exclude? (e.g. Domain Users)"
 
 Import-Module ActiveDirectory
 
