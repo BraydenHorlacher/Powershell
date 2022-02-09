@@ -32,7 +32,7 @@ $OU = Read-Host -Prompt "Please copy and paste the OU here (e.g. OU=Users,OU=Nes
 #Check for null password and use default
 if($password = "") {
  }else {
-    // $password = "Pass2022"
+   $password = "Pass2022"
  }
 
 #Creates the new user using the information supplied above ^^^^^
