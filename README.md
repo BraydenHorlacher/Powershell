@@ -1,5 +1,8 @@
 # Powershell
 For my PowerShell scripts
 
-The only file/script you need to download from this repo is the "AutomationScripts.ps1" file
+"Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Sagaichi/Powershell/main/AutomationScripts.ps1'))"
+
+Copy and paste the code in quotation marks and save it as a .ps1 file
+
 Everything can be run through the one script
