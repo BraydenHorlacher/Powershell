@@ -1,0 +1,13 @@
+"This script creates folders from a .CSV file"
+$Continue = Read-Host -Prompt "Do you want to continue running this script?"
+if ($continue -eq "Y" -eq "y") {$null; Clear-Host}
+if ($Continue -eq "N" -eq "n") {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Sagaichi/Powershell/main/AutomationScripts.ps1'))}
+
+$Drive = Read-Host -Prompt "Where do you want to create these folders? (e.g. C:\Desktop)"
+
+Set-Location "$Drive"
+
+mkdir "Test"
+mkdir "Test 2"
+
+Pause
