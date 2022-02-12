@@ -87,3 +87,5 @@ elseif ($Status -eq 1)
     # Installs windows updates
     InstallWindowsUpdates
 }
+
+Pause
