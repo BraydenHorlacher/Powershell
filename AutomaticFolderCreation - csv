@@ -25,5 +25,5 @@ $Folders = Import-Csv "$CSV"
  
 ForEach ($Folder in $Folders) { 
  
-New-Item $Folder.Name -type directory 
+New-Item "$($Folder.Name)$($Folder.ID)" -type directory 
 }  
