@@ -13,4 +13,12 @@ $Drive = Read-Host -Prompt "Where do you want to create these folders? (e.g. C:\
 
 Set-Location "$Drive"
 
-Write-Host "$Drive"
+$CSV = Read-Host -Prompt "Paste the .CSV path here"
+
+Import-Csv "$CSV" -Delimiter ',' |
+    % {
+        New-Item -Path $Drive -Name $_.Name -ItemType Directory
+    }
+
+
+Pause
