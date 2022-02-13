@@ -39,6 +39,12 @@ if ([System.IO.File]::Exists($CSVFile)) {
 # Lets iterate over each line in the CSV file
 foreach ($user in $CSV) {
 
+    # Format's the Folder name
+    $Folder = "$($user.'First Name')' '$($user.'Last Name') - $($User.'Student ID')"
+    $Folder = $Folder.Replace(" ", "")
+
+    mkdir = $Folder 
 }
 
+Write-Host "Created $Folder in $Drive"
 Pause
