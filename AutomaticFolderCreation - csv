@@ -50,7 +50,7 @@ foreach ($user in $CSV) {
     $Folder = $Folder.Replace(" ", "")
 
     # Creates the Folders
-    mkdir -path "$Drive" -name "$Folder" 
+    mkdir "$Folder" 
 
 }
 
