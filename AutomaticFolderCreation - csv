@@ -16,8 +16,8 @@ Set-Location "$Drive"
 $CSV = Read-Host -Prompt "Paste the .CSV path here"
 
 Import-Csv "$CSV" -Delimiter ',' |
-    % {
-        New-Item -Path $Drive -Name $_.Name -ItemType Directory
+    ForEach-Object {
+        New-Item -Name $_.Name -ItemType Directory
     }
 
 
