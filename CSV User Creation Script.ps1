@@ -6,7 +6,6 @@ pause
 
 Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Sagaichi/Powershell/main/AutomationScripts.ps1'))
 
-<#
 "This script bulk Creates Users from a .CSV file in your Active Directory"
 ""
 $Continue = Read-Host -Prompt "Do you want to continue running this script?"
@@ -43,7 +42,7 @@ if ([System.IO.File]::Exists($CSVFile)) {
 $Domain = Read-Host -Prompt "Enter the domain name without the @ symbol (This is for the email address)"
 
 # Lets iterate over each line in the CSV file
-foreach($user in $CSV) {
+foreach ($user in $CSV) {
 
     # Password
     $SecurePassword = ConvertTo-SecureString "Pass2022" -AsPlainText -Force
@@ -82,4 +81,3 @@ foreach($user in $CSV) {
 }
 
 Read-Host -Prompt "Script complete... Press enter to exit."
-#>
