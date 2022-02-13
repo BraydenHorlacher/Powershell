@@ -48,7 +48,7 @@ foreach ($user in $CSV) {
     $Folder = $Folder.Replace(" ", "")
 
     # Creates the Folders
-    New-Item -Path "$Drive" -Name "$Folder" 
+    mkdir -Path "$Drive" -Name "$Folder" 
 
 }
 
