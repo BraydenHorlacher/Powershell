@@ -40,7 +40,7 @@ if ([System.IO.File]::Exists($CSVFile)) {
 foreach ($user in $CSV) {
 
     # Format's the Folder name
-    $Folder = "$($user.'First Name')' '$($user.'Last Name')'/'$($User.'Student ID')"
+    $Folder = "$($user.'First Name')' '$($user.'Last Name')' '$($User.'Student ID')"
     $Folder = $Folder.Replace(" ", "")
 
     mkdir "$Folder" 
