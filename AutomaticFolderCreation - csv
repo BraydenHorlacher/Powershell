@@ -9,13 +9,21 @@ if ($Continue -eq "N" -eq "n") {Invoke-Expression ((New-Object System.Net.WebCli
 
 Clear-Host
 
-$Drive = Read-Host -Prompt "Where do you want to create these folders? (e.g. C:\Desktop)"
+$path = Read-Host -prompt "Paste the file path for where you want to create the folders here"
 
-Set-Location "$Drive"
+# Location Where your folders are to be created
 
-$CSV = Read-Host -Prompt "Paste the .CSV path here"
+Set-Location "$path"
 
-Import-Csv "$CSV" -Delimiter ',' |
-ForEach-Object ($i) in $CSV {
-New-Item -Path $Drive -Name $i.CSV -ItemType Directory
-}
+# Import CSV file from location
+
+$CSV =  Read-Host -prompt "Paste the path to the CSV Here"
+
+$Folders = Import-Csv "$CSV"
+
+# Create Folders from CSV ensure you have a heading of Name in your CSV file
+ 
+ForEach ($Folder in $Folders) { 
+ 
+New-Item ".$($Folder.Name).$($Folder.ID)" -type directory 
+}  
