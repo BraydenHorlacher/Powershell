@@ -41,8 +41,11 @@ foreach ($user in $CSV) {
 
     # Format's the Folder name
     $Folder = "$($user.'First Name')' '$($user.'Last Name')' '$($User.'Student ID')"
+    $Folder = $Folder.Replace(" ", "")
 
-    mkdir "$Folder" 
+    # Creates the Folders
+    mkdir -Name "$($user.'First Name')' '$($user.'Last Name')' '$($User.'Student ID')"
+
 }
 
 Write-Host "Created $Folder in $Drive"
