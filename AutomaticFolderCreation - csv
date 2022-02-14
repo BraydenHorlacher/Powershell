@@ -9,11 +9,33 @@ if ($Continue -eq "N" -eq "n") {Invoke-Expression ((New-Object System.Net.WebCli
 
 Clear-Host
 
-$path = Read-Host -prompt "Paste the file path for where you want to create the folders here"
+# Open file dialog
+# Load Windows Forms
+[System.Reflection.Assembly]::LoadWithPartialName("System.windows.forms") | Out-Null
+
+# Create and show open file dialog
+$dialog = New-Object System.Windows.Forms.OpenFileDialog
+$dialog.InitialDirectory = $StartDir
+$dialog.Filter = "CSV (*.csv)| *.csv" 
+$dialog.ShowDialog() | Out-Null
+
+# Get file path
+$CSVFile = $dialog.FileName
+
+# Import file into variable
+# Lets make sure the file path was valid
+# If the file path is not valid, then exit the script
+if ([System.IO.File]::Exists($CSVFile)) {
+    Write-Host "Importing CSV..."
+    $Folder = Import-Csv -LiteralPath "$CSVFile"
+} else {
+    Write-Host "File path specified was not valid"
+    Exit
+}
 
 # Location Where your folders are to be created
 
-Set-Location "$path"
+#Set-Location "$path"
 
 # Import CSV file from location
 
@@ -25,5 +47,5 @@ $Folders = Import-Csv "$CSV"
  
 ForEach ($Folder in $Folders) { 
  
-New-Item "$($Folder.Name)$($Folder.ID)" -type directory 
+New-Item "$($Folder.Name)-$($Folder.ID)" -type directory 
 }  
