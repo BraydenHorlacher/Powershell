@@ -43,5 +43,5 @@ Set-Location "$path"
  
 ForEach ($Folder in $Folders) { 
  
-New-Item "$($Folder.Name)-$($Folder.ID)" -type directory 
+New-Item "$($Folder.Name) - $($Folder.ID)" -type directory 
 }  
