@@ -29,7 +29,7 @@ $CSVFile = $dialog.FileName
 # If the file path is not valid, then exit the script
 if ([System.IO.File]::Exists($CSVFile)) {
     Write-Host "Importing CSV..."
-    $Folder = Import-Csv -LiteralPath "$CSVFile"
+    $Folders = Import-Csv -LiteralPath "$CSVFile"
 } else {
     Write-Host "File path specified was not valid"
     Exit
