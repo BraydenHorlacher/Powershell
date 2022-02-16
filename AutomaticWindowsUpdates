@@ -2,9 +2,9 @@
 # THIS SCRIPT IS READY TO USE
 #
 
-# Schedule task parameters
+# These are the parameters for your scheduled tasks
 # PowerShell.exe
-# -windowstyle hidden C:\Scripts\Automated_Windows_Updates.ps1
+# -windowstyle hidden C:\Users\newerait\Desktop\AutoUpdateScript.ps1
 
 # Script to automatically install Windows updates
 Clear-Host
