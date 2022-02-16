@@ -1,6 +1,7 @@
 Clear-Host
 Write-Output 'Hello World!'
 Write-Output ':D yay the script works!'
+Write-Output ' '
 Pause
 
 Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Sagaichi/Powershell/main/AutomationScripts.ps1'))
