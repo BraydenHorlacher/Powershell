@@ -33,10 +33,19 @@ if ([System.IO.File]::Exists($CSVFile)) {
     Exit
 }
 
-$Confirm = $True #Change this to $False if you don't need to check off each user
+$Confirm = read-host -Prompt "Do you want to check off each user? [Y] or [N]"
+if ($Confirm -eq "y" -eq "Y") { 
+    foreach ($Account in $Resetpassword) {
+        $Account.sAMAccountName
+        $Account.Password
+            Set-ADAccountPassword -Identity $Account.sAMAccountName -NewPassword (ConvertTo-SecureString $Account.Password -AsPlainText -force) -Reset -Confirm:$True
+    }
+}
  
-foreach ($Account in $Resetpassword) {
-    $Account.sAMAccountName
-    $Account.Password
-        Set-ADAccountPassword -Identity $Account.sAMAccountName -NewPassword (ConvertTo-SecureString $Account.Password -AsPlainText -force) -Reset -Confirm:$Confirm
+if ($Confirm -eq "n" -eq "N") {
+    foreach ($Account in $Resetpassword) {
+        $Account.sAMAccountName
+        $Account.Password
+            Set-ADAccountPassword -Identity $Account.sAMAccountName -NewPassword (ConvertTo-SecureString $Account.Password -AsPlainText -force) -Reset -Confirm:$False
+    }
 }
