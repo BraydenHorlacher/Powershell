@@ -20,7 +20,7 @@ I AM NOT LIABLE FOR ANY ISSUES CREATED BY THESE SCRIPTS! USE AT YOUR OWN RISK!
     #prompts the user for a choice about what script to run
     $Userchoice = Read-Host -Prompt "Please select an option
 
-    1.) Create users with a CSV file.
+    1.) Creates users with a CSV file.
 
     2.) Creates a user using inputs from the host.
 
@@ -28,7 +28,7 @@ I AM NOT LIABLE FOR ANY ISSUES CREATED BY THESE SCRIPTS! USE AT YOUR OWN RISK!
 
     4.) Removes User groups from disabled users within a specific OU.
 
-    5.) Auto Windows update script (Recommended to download this from my github) {Requires Admin powershell}
+    5.) Auto Windows update script (Recommended to download or copy this from my github) {Requires Admin powershell}
 
     6.) Folder Creation from CSV file.
 
@@ -50,14 +50,14 @@ I AM NOT LIABLE FOR ANY ISSUES CREATED BY THESE SCRIPTS! USE AT YOUR OWN RISK!
     #Remove User Groups Script
     if ($Userchoice -eq 4) {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Sagaichi/Powershell/main/Remove%20Disabled%20Users%20Groups.ps1'))}
     #Auto windows update script
-    if ($Userchoice -eq 5) {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Sagaichi/Powershell/main/AutomaticWindowsUpdates'))}
-    #Auto windows update script
+    if ($Userchoice -eq 5) {Start-Process 'https://github.com/Sagaichi/Powershell/blob/main/AutomaticWindowsUpdates'}
+    #Creates Folders from a CSV File
     if ($Userchoice -eq 6) {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Sagaichi/Powershell/main/AutomaticFolderCreation%20-%20csv'))}
     #Test Script
     if ($Userchoice -eq 7) {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Sagaichi/Powershell/main/Test?token=GHSAT0AAAAAABRJFR6ADJNJJDJECO33ZPP4YQAIZNA'))}
 
-    #Takes the script back to the start
-$Loop = Read-Host -Prompt ("Would you like to run another script? Y or N")
+#Takes the script back to the start
+$Loop = Read-Host -Prompt ("Would you like to run another script? (Y or N)")
 if ($Loop -eq "Y" -eq "y") {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Sagaichi/Powershell/main/AutomationScripts.ps1'))}
 if ($Loop -eq "N" -eq "n") {Exit}
 

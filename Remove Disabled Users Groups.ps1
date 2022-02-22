@@ -1,7 +1,7 @@
 ﻿Clear-Host
 "This script removes usergroups from enabled or disabled users in your Active Directory"
 ""
-$Continue = Read-Host -Prompt "Do you want to continue running this script?"
+$Continue = Read-Host -Prompt "Do you want to continue running this script? (Y or N)"
 if ($continue -eq "Y" -eq "y") {$null; Clear-Host}
 if ($Continue -eq "N" -eq "n") {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Sagaichi/Powershell/main/AutomationScripts.ps1'))}
 
