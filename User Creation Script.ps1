@@ -48,12 +48,12 @@ $Add = Read-Host -Prompt "Do you need to add this user to groups? (Y or N)"
 
 if ($Add -eq "y" -eq "Y") {
 
-  
+  $Group = Read-Host -Prompt "What groups do you want to add this user too?"
+
+  Add-ADGroupMember -Identity "$Group" -Members "$User $Lastname"
+
 }
 
-#Adds the user to user groups in AD
-$Group = Read-Host -Prompt "What groups do you want to add this user too?"
-
-Add-ADGroupMember -Identity "$Group" -Members "$User $Lastname"
+if ($Add -eq "n" -eq "N") {$null}
 
 Pause
