@@ -50,7 +50,7 @@ I AM NOT LIABLE FOR ANY ISSUES CREATED BY THESE SCRIPTS! USE AT YOUR OWN RISK!
     #Remove User Groups Script
     if ($Userchoice -eq 4) {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Sagaichi/Powershell/main/Remove%20Disabled%20Users%20Groups.ps1'))}
     #Auto windows update script
-    if ($Userchoice -eq 5) {Clear-Host "Please check your preferred web browser to download" {Start-Process 'https://github.com/Sagaichi/Powershell/blob/main/AutomaticWindowsUpdates'}}
+    if ($Userchoice -eq 5) {Start-Process 'https://github.com/Sagaichi/Powershell/blob/main/AutomaticWindowsUpdates'}
     #Creates Folders from a CSV File
     if ($Userchoice -eq 6) {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Sagaichi/Powershell/main/AutomaticFolderCreation%20-%20csv'))}
     #Test Script
