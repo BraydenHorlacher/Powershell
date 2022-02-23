@@ -28,7 +28,7 @@ I AM NOT LIABLE FOR ANY ISSUES CREATED BY THESE SCRIPTS! USE AT YOUR OWN RISK!
 
     4.) Removes User groups from disabled users within a specific OU.
 
-    5.) Auto Windows update script (Recommended to download or copy this from my github) {Requires Admin powershell}
+    5.) Auto Windows update script (Recommended to download or copy this from my github)
 
     6.) Folder Creation from CSV file.
 
