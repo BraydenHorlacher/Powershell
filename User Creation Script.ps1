@@ -44,16 +44,4 @@ Set-ADUser -Identity "$User $lastname" -EmailAddress "$Initial$Lastname@$Domain"
 #Finds the AD User to verify creation
 Get-ADUser -identity "$User $Lastname"
 
-$Add = Read-Host -Prompt "Do you need to add this user to groups? (Y or N)"
-
-if ($Add -eq "y" -eq "Y") {
-
-  $Group = Read-Host -Prompt "What groups do you want to add this user too?"
-
-  Add-ADGroupMember -Identity "$Group" -Members "$User $Lastname"
-
-}
-
-if ($Add -eq "n" -eq "N") {$null}
-
 Pause
