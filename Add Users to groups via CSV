@@ -1,0 +1,45 @@
+#Imports the Active Directory to allow the script to run
+#requires -module ActiveDirectory   
+
+Clear-Host
+
+"This script adds users from a .CSV file to AD Groups"
+
+$Continue = Read-Host -Prompt "Do you want to continue running this script? (Y or N)"
+if ($continue -eq "Y" -eq "y") {$null; Clear-Host}
+if ($Continue -eq "N" -eq "n") {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Sagaichi/Powershell/main/AutomationScripts.ps1'))}
+
+Clear-Host
+
+# Open file dialog
+# Load Windows Forms
+[System.Reflection.Assembly]::LoadWithPartialName("System.windows.forms") | Out-Null
+
+# Create and show open file dialog
+$dialog = New-Object System.Windows.Forms.OpenFileDialog
+$dialog.InitialDirectory = $StartDir
+$dialog.Filter = "CSV (*.csv)| *.csv" 
+$dialog.ShowDialog() | Out-Null
+
+# Get file path
+$CSVFile = $dialog.FileName
+
+# Import file into variable
+# Lets make sure the file path was valid
+# If the file path is not valid, then exit the script
+if ([System.IO.File]::Exists($CSVFile)) {
+    Write-Host "Importing CSV..."
+    $CSV = Import-Csv -LiteralPath "$CSVFile"
+} else {
+    Write-Host "File path specified was not valid"
+    Exit
+}
+
+$Group = Read-Host -Prompt ""
+
+foreach ($User in $CSV) {
+    $User.SAMAccountName
+
+    Add-ADGroupMember -Identity "$Group" -Members "$User"
+
+}
