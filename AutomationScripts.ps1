@@ -42,9 +42,7 @@ I AM NOT LIABLE FOR ANY ISSUES CREATED BY THESE SCRIPTS! USE AT YOUR OWN RISK!
 
     
     #Quits the script
-    if ($Userchoice -eq 'q' -eq 'Q') {Exit}
-    #If nothing is selected return to the selection prompt
-    if ($Userchoice = $Null){$Userchoice}
+    if ($Userchoice -eq 'q' -eq 'Q') {Exit} 
     #User Creation via CSV script
     if ($Userchoice -eq 1) {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Sagaichi/Powershell/main/CSV%20User%20Creation%20Script.ps1'))}
     #User Creation Script
