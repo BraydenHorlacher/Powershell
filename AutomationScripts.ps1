@@ -32,9 +32,7 @@ I AM NOT LIABLE FOR ANY ISSUES CREATED BY THESE SCRIPTS! USE AT YOUR OWN RISK!
 
     6.) Folder Creation from CSV file.
 
-    7.) Adds users to a group from a CSV file (WORK IN PROGRESS!)
-
-    8.) Hello World Script (Says Hello to the WORLD!)
+    7.) Hello World Script (Says Hello to the WORLD!)
 
     Exit.) Exits the script (Enter Q).
     
@@ -55,10 +53,8 @@ I AM NOT LIABLE FOR ANY ISSUES CREATED BY THESE SCRIPTS! USE AT YOUR OWN RISK!
     if ($Userchoice -eq 5) {Start-Process 'https://github.com/Sagaichi/Powershell/blob/main/AutomaticWindowsUpdates'}
     #Creates Folders from a CSV File
     if ($Userchoice -eq 6) {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Sagaichi/Powershell/main/AutomaticFolderCreation%20-%20csv'))}
-    #Adds users in a CSV file to a group
-    if ($Userchoice -eq 7) {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Sagaichi/Powershell/main/'))}
     #Test Script
-    if ($Userchoice -eq 8) {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Sagaichi/Powershell/main/Test?token=GHSAT0AAAAAABRJFR6ADJNJJDJECO33ZPP4YQAIZNA'))}
+    if ($Userchoice -eq 7) {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Sagaichi/Powershell/main/Test?token=GHSAT0AAAAAABRJFR6ADJNJJDJECO33ZPP4YQAIZNA'))}
 
 #Takes the script back to the start
 $Loop = Read-Host -Prompt ("Would you like to run another script? (Y or N)")
