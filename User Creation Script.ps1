@@ -49,13 +49,13 @@ $Teacher = Read-Host -Prompt "Is this user a Teacher / Staff Member? (Y or N)"
 
 #Adds AD User to default groups (DOES NOT NEED DOMAIN USERS GROUP!!! This automatically gets added when the account has been created)
 if ($Teacher -eq "y" -eq "Y") {
-  Add-ADGroupMember -Identity All Teachers -Members "$User $Lastname"
+  Add-ADGroupMember -Identity 'All Teachers' -Members "$User $Lastname"
   Add-ADGroupMember -Identity LIC_EnterpriseMobilitySecurityE3 -Members "$User $Lastname"
   Add-ADGroupMember -Identity LIC_GWfEPlusStaff -Members "$User $Lastname"
   Add-ADGroupMember -Identity LIC_MinecraftEducationEditionFaculty -Members "$User $Lastname"
   Add-ADGroupMember -Identity LIC_Office365A3forFaculty -Members "$User $Lastname"
   Add-ADGroupMember -Identity LIC_Windows10EnterpriseA3forFaculty -Members "$User $Lastname"
-  Add-ADGroupMember -Identity N4L VPN Clients -Members "$User $Lastname"
+  Add-ADGroupMember -Identity 'N4L VPN Clients' -Members "$User $Lastname"
   Add-ADGroupMember -Identity Teachers -Members "$User $Lastname"
   Add-ADGroupMember -Identity Staff -Members "$User $Lastname" 
 }
