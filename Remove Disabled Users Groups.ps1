@@ -1,4 +1,7 @@
-﻿Clear-Host
+﻿#Imports the Active Directory to allow the script to run
+#requires -module ActiveDirectory  
+
+Clear-Host
 "This script removes usergroups from enabled or disabled users in your Active Directory"
 ""
 $Continue = Read-Host -Prompt "Do you want to continue running this script? (Y or N)"
@@ -30,8 +33,6 @@ if ($Confirm -eq "n" -eq "N"){
     }
 }
 }
-
-Import-Module ActiveDirectory
 
 Write-Host Organizational Unit: $OU
 Write-Host Confirm: $Confirm
