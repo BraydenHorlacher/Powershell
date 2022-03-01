@@ -3,7 +3,7 @@
 ""
 $Continue = Read-Host -Prompt "Do you want to continue running this script? (Y or N)"
 if ($continue -eq "Y" -eq "y") {$null; Clear-Host}
-if ($Continue -eq "N" -eq "n") {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Sagaichi/Powershell/main/AutomationScripts.ps1'))}
+if ($Continue -eq "N" -eq "n") {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/BraydenHorlacher/Powershell/main/AutomationScripts.ps1'))}
 
 [string] $OU = read-host -prompt "Please enter the OU (e.g. OU=Left,OU=Users,OU=_DISABLED,DC=internal,DC=rosehill-college,DC=co,DC=nz)"; 
 $ExceptGroup = read-host -Prompt "What group do you want to exclude? (e.g. Domain Users)";
