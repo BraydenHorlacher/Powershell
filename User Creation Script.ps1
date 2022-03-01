@@ -39,7 +39,7 @@ if($password = "") {
 New-ADUser -Name "$User $Lastname" -GivenName $User -Surname $Lastname -SamAccountName "$User $Lastname" -UserPrincipalName "$Initial$Lastname@$Domain" -AccountPassword (ConvertTo-SecureString -AsPlainText "$Password" -Force) -Enabled $true -ChangePasswordAtLogon $true -path $OU
 
 #Sets user email address in AD
-Set-ADUser -Identity "$User $lastname" -EmailAddress "$Initial$Lastname@$Domain"
+Set-ADUser -Identity "$User $lastname" -EmailAddress "$Initial.$Lastname@$Domain"
 
 #Finds the AD User to verify creation
 Get-ADUser -identity "$User $Lastname"
