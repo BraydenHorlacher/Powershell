@@ -47,14 +47,14 @@ Get-ADUser -identity "$User $Lastname"
 #Used to find if the user is a teacher
 $Teacher = Read-Host -Prompt "Is this user a Teacher / Staff Member? (Y or N)"
 
-#Adds AD User to default groups
+#Adds AD User to default groups (DOES NOT NEED DOMAIN USERS GROUP!!! This automatically gets added when the account has been created)
 if ($Teacher -eq "y" -eq "Y") {
   Add-ADGroupMember -Identity "All Teachers","LIC_EnterpriseMobilitySecurityE3","LIC_GWfEPlusStaff","LIC_MinecraftEducationEditionFaculty","LIC_Office365A3forFaculty","LIC_Windows10EnterpriseA3forFaculty","N4L VPN Clients","Teachers" -Members "$User $Lastname"  
 }
 
 #Doesn't add the user to anygroups
 if ($Teacher -eq "n" -eq "N") {
-  "If the user is not a Teacher they may need more specific groups"
+  "If the user is not a Teacher they may need more specific groups and will need to be added manually"
 }
 
 Pause
