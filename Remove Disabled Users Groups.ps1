@@ -1,5 +1,5 @@
 ﻿#Imports the Active Directory to allow the script to run
-#requires -module ActiveDirectory  
+Import-Module ActiveDirectory
 
 Clear-Host
 "This script removes usergroups from enabled or disabled users in your Active Directory"
@@ -33,9 +33,6 @@ if ($Confirm -eq "n" -eq "N"){
     }
 }
 }
-
-#Times out the script so that AD can import (THIS IS A TEST!)
-timeout /t 5
 
 Write-Host Organizational Unit: $OU
 Write-Host Confirm: $Confirm
