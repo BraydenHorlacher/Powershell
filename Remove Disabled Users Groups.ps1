@@ -8,8 +8,18 @@ $Continue = Read-Host -Prompt "Do you want to continue running this script? (Y o
 if ($continue -eq "Y" -eq "y") {$null; Clear-Host}
 if ($Continue -eq "N" -eq "n") {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/BraydenHorlacher/Powershell/main/AutomationScripts.ps1'))}
 
+#Makes sure that the group is null
+$ExceptGroup = $null
+
 [string] $OU = read-host -prompt "Please enter the OU (e.g. OU=Left,OU=Users,OU=_DISABLED,DC=internal,DC=rosehill-college,DC=co,DC=nz)"; 
-$ExceptGroup = read-host -Prompt "What group do you want to exclude? (e.g. Domain Users)";
+$ExceptGroup = read-host -Prompt "What group do you want to exclude? (Default is 'Domain Users')";
+
+#Check for null password and use default
+if($ExceptGroup = "") {
+}else {
+  $ExceptGroup = "Domain Users"
+}
+
 $Confirm = Read-Host -Prompt "Do you want to manually check off each group removal for the users in this OU?"
 if ($Confirm -eq "y" -eq "Y"){
     foreach ($user in $users) {
@@ -24,14 +34,14 @@ if ($Confirm -eq "y" -eq "Y"){
 }    
 if ($Confirm -eq "n" -eq "N"){
     foreach ($user in $users) {
-    $UserDN = $user.DistinguishedName
-    Get-ADGroup -LDAPFilter "(member=$UserDN)" | foreach-object {
-        if ($_.name -ne $ExceptGroup) {
-            Write-Host Removing $user.SamAccountName from group $_.name
-            Remove-ADGroupMember -identity $_.name -Member $UserDN -Confirm:$False
+        $UserDN = $user.DistinguishedName
+        Get-ADGroup -LDAPFilter "(member=$UserDN)" | foreach-object {
+            if ($_.name -ne $ExceptGroup) {
+                Write-Host Removing $user.SamAccountName from group $_.name
+                Remove-ADGroupMember -identity $_.name -Member $UserDN -Confirm:$False
+            }
         }
     }
-}
 }
 
 Write-Host Organizational Unit: $OU
