@@ -34,6 +34,9 @@ if ($Confirm -eq "n" -eq "N"){
 }
 }
 
+#Times out the script so that AD can import (THIS IS A TEST!)
+timeout /t 5
+
 Write-Host Organizational Unit: $OU
 Write-Host Confirm: $Confirm
 
