@@ -20,6 +20,8 @@ if($ExceptGroup = "") {
   $ExceptGroup = "Domain Users"
 }
 
+$users = Get-ADUser -SearchBase $OU -Filter {Enabled -eq $False}
+
 $Confirm = Read-Host -Prompt "Do you want to manually check off each group removal for the users in this OU?"
 if ($Confirm -eq "y" -eq "Y"){
     foreach ($user in $users) {
@@ -46,7 +48,5 @@ if ($Confirm -eq "n" -eq "N"){
 
 Write-Host Organizational Unit: $OU
 Write-Host Confirm: $Confirm
-
-$users = Get-ADUser -SearchBase $OU -Filter {Enabled -eq $False}
 
 pause
