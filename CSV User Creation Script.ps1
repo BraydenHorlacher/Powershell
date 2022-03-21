@@ -60,7 +60,7 @@ foreach ($user in $CSV) {
                 -EmailAddress $user'@'$Domain `
                 -Description $user.Description `
                 -OfficePhone $user.'Office Phone' `
-                -Path $($user.'Organizational Unit') `
+                -Path $user.'Organizational Unit' `
                 -ChangePasswordAtLogon $false `
                 -AccountPassword $SecurePassword `
                 -Enabled $([System.Convert]::ToBoolean($user.Enabled))
