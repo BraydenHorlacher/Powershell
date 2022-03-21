@@ -4,7 +4,6 @@ Clear-Host
 This script creates users from a .CSV file. Use the link below to find the format for the .CSV file
 https://www.alitajran.com/wp-content/uploads/spreadsheets/NewUsersSent.csv
 "
-Pause
 
 #Allows the user to continue use of the script
 $Continue = Read-Host -Prompt "Do you want to continue running this script? (Y or N)"
