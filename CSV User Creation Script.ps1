@@ -1,13 +1,18 @@
 Clear-Host
 
-"This script bulk Creates Users from a .CSV file in your Active Directory"
-""
+"
+This script creates users from a .CSV file. Use the link below to find the format for the .CSV file
+https://www.alitajran.com/wp-content/uploads/spreadsheets/NewUsersSent.csv
+"
+Pause
+
+#Allows the user to continue use of the script
 $Continue = Read-Host -Prompt "Do you want to continue running this script? (Y or N)"
-if ($continue -eq "Y" -eq "y") {$null; Clear-Host}
+if ($Continue -eq "Y" -eq "y") {$null; Clear-Host}
 if ($Continue -eq "N" -eq "n") {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/BraydenHorlacher/Powershell/main/AutomationScripts.ps1'))}
 
 #Imports the Active Directory to allow the script to run
-#requires -module ActiveDirectory   
+#requires -module ActiveDirectory
 
 # Open file dialog
 # Load Windows Forms
@@ -33,45 +38,62 @@ if ([System.IO.File]::Exists($CSVFile)) {
     Exit
 }
 
-$Domain = Read-Host -Prompt "Enter the domain name without the @ symbol (This is for the email address)"
 
-# Lets iterate over each line in the CSV file
-foreach ($user in $CSV) {
+$UPN = Read-Host -Prompt "Input the domain without the @ symbol (e.g. rc.school.nz)"
 
-    # Password
-    $SecurePassword = ConvertTo-SecureString "Pass2022" -AsPlainText -Force
+foreach ($User in $CSV) {
+    $username = $User.username
+    $password = $User.password
+    $firstname = $User.firstname
+    $lastname = $User.lastname
+    $initials = $User.initials
+    $OU = $User.ou #This field refers to the OU the user account is to be created in
+    $email = $User.email
+    $streetaddress = $User.streetaddress
+    $city = $User.city
+    $zipcode = $User.zipcode
+    $state = $User.state
+    $country = $User.country
+    $telephone = $User.telephone
+    $jobtitle = $User.jobtitle
+    $company = $User.company
+    $department = $User.department
 
-    # Format their username
-    $Username = "$($user.'First Name').$($user.'Last Name')"
-    $Username = $Username.Replace(" ", "")
-
-    # Create new user
-    New-ADUser -Name "$($user.'First Name') $($user.'Last Name')" `
-                -GivenName $user.'First Name' `
-                -Surname $user.'Last Name' `
-                -UserPrincipalName $Username `
-                -SamAccountName $Username `
-                -EmailAddress $user'@'$Domain `
-                -Description $user.Description `
-                -OfficePhone $user.'Office Phone' `
-                -Path "$User.OU" `
-                -ChangePasswordAtLogon $false `
-                -AccountPassword $SecurePassword `
-                -Enabled $([System.Convert]::ToBoolean($user.Enabled))
-
-    # Write to host that we created a new user
-    Write-Host "Created $Username / $($user.'Email Address')"
-
-    # If groups is not null... then iterate over groups (if any were specified) and add user to groups
-    if ($User.'Add Groups (csv)' -ne "") {
-        $User.'Add Groups (csv)'.Split(",") | ForEach-Object {
-            Add-ADGroupMember -Identity $_ -Members "$($user.'First Name').$($user.'Last Name')"
-            WriteHost "Added $Username to $_ group" # Log to console
-        }
+    # Check to see if the user already exists in AD
+    if (Get-ADUser -F { SamAccountName -eq $username }) {
+        
+        # If user does exist, give a warning
+        Write-Warning "A user account with username $username already exists in Active Directory."
     }
+    else {
 
-    # Write to host that we created the user
-    Write-Host "Created user $Username with groups $($User.'Add Groups (csv)')"
+        # User does not exist then proceed to create the new user account
+        # Account will be created in the OU provided by the $OU variable read from the CSV file
+        New-ADUser `
+            -SamAccountName $username `
+            -UserPrincipalName "$username@$UPN" `
+            -Name "$firstname $lastname" `
+            -GivenName $firstname `
+            -Surname $lastname `
+            -Initials $initials `
+            -Enabled $True `
+            -DisplayName "$lastname, $firstname" `
+            -Path $OU `
+            -City $city `
+            -PostalCode $zipcode `
+            -Country $country `
+            -Company $company `
+            -State $state `
+            -StreetAddress $streetaddress `
+            -OfficePhone $telephone `
+            -EmailAddress $email `
+            -Title $jobtitle `
+            -Department $department `
+            -AccountPassword (ConvertTo-secureString $password -AsPlainText -Force) -ChangePasswordAtLogon $True
+
+        # If user is created, show message.
+        Write-Host "The user account $username is created." -ForegroundColor Cyan
+    }
 }
 
-Read-Host -Prompt "Script complete... Press enter to exit."
+Read-Host -Prompt "Press Enter to exit"
