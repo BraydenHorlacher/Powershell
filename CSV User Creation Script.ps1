@@ -34,7 +34,6 @@ if ([System.IO.File]::Exists($CSVFile)) {
 }
 
 $Domain = Read-Host -Prompt "Enter the domain name without the @ symbol (This is for the email address)"
-$OU = Read-Host -Prompt "Paste the OU here"
 
 # Lets iterate over each line in the CSV file
 foreach ($user in $CSV) {
@@ -55,7 +54,7 @@ foreach ($user in $CSV) {
                 -EmailAddress $user'@'$Domain `
                 -Description $user.Description `
                 -OfficePhone $user.'Office Phone' `
-                -Path $OU `
+                -Path "$User.OU" `
                 -ChangePasswordAtLogon $false `
                 -AccountPassword $SecurePassword `
                 -Enabled $([System.Convert]::ToBoolean($user.Enabled))
