@@ -56,7 +56,7 @@ I AM NOT LIABLE FOR ANY ISSUES CREATED BY THESE SCRIPTS! USE AT YOUR OWN RISK!
     #Test Script
     if ($Userchoice -eq 7) {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/BraydenHorlacher/Powershell/main/Test?token=GHSAT0AAAAAABRJFR6ADJNJJDJECO33ZPP4YQAIZNA'))}
     #Nessie
-    if ($Userchoice -eq 'Nessie' -eq 'nessie' -eq 'Nessy' -eq 'nessy') {start-process "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" https://youtu.be/MGWMLppi8bE?t=30}
+    if ($Userchoice -eq 'Nessie' -eq 'nessie' -eq 'Nessy' -eq 'nessy') {start-process "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" https://youtu.be/MGWMLppi8bE?t=30}
 
 #Takes the script back to the start
 $Loop = Read-Host -Prompt ("Would you like to run another script? (Y or N)")
