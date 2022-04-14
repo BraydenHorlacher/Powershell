@@ -27,7 +27,7 @@ $Initial = Read-Host -Prompt "Please enter the FIRST Initial of the users first 
 $Domain = Read-Host -Prompt "Please enter the domain name you would like to use for the user (e.g. Nessie.co.nz)";
 
 #Specify what OU to place the new user into
-$OU = Read-Host -Prompt "Please copy and paste the OU here (e.g. OU=Users,OU=Nessie,DC=Nessie,DC=co,DC=nz)";
+$OU = Read-Host -Prompt "Please copy and paste the OU here (e.g. OU=Staff 2021,OU=Nessie,DC=Nessie,DC=co,DC=nz)";
 
 #Check for null password and use default
 if($password = "") {
@@ -36,7 +36,7 @@ if($password = "") {
  }
 
 #Creates the new user using the information supplied above ^^^^^
-New-ADUser -Name "$User $Lastname" -GivenName $User -Surname $Lastname -SamAccountName "$User $Lastname" -UserPrincipalName "$Initial$Lastname@$Domain" -AccountPassword (ConvertTo-SecureString -AsPlainText "$Password" -Force) -Enabled $true -ChangePasswordAtLogon $true -path $OU
+New-ADUser -Name "$User $Lastname" -GivenName $User -Surname $Lastname -SamAccountName "$User $Lastname" -UserPrincipalName "$Initial.$Lastname@$Domain" -AccountPassword (ConvertTo-SecureString -AsPlainText "$Password" -Force) -Enabled $true -ChangePasswordAtLogon $true -path $OU
 
 #Sets user email address in AD
 Set-ADUser -Identity "$User $lastname" -EmailAddress "$Initial.$Lastname@$Domain"
