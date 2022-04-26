@@ -1,3 +1,5 @@
+Import-Module ActiveDirectory
+
 <# Script to create user folders from a CSV file #>
 Clear-Host
 
@@ -39,9 +41,27 @@ if ([System.IO.File]::Exists($CSVFile)) {
 
 Set-Location "$path"
 
-# Create Folders from CSV ensure you have a heading of Name and ID in your CSV file
+# Create Folders from CSV ensure you have a heading of "Name" and "ID" in your CSV file
  
 ForEach ($Folder in $Folders) { 
  
 New-Item "$($Folder.LastName) $($Folder.FirstName) - $($Folder.ID)" -type directory 
 }  
+
+Write-Output "-------------------------------------------------------------------"
+Write-Output "------------------------Folder Permissions-------------------------"
+Write-Output "-------------------------------------------------------------------"
+
+$Continue1 = Read-Host -prompt "Do you want to automatically assign user access permissions to these folders? (Permissions set are modify permissions)"
+if ($Continue1 -eq "Y" -eq "y") {
+    foreach ($Folder in $Folders) {
+        $Path = "$($Folder.LastName) $($Folder.FirstName) - $($Folder.ID)"
+        $Acl = (Get-Item $Path).GetAccessControl('Access')
+        $Username = $Folder.ID
+        $Ar = New-Object System.Security.AccessControl.FileSystemAccessRule($($Username), 'Modify','ContainerInherit,ObjectInherit', 'None', 'Allow')
+        $Acl.SetAccessRule($Ar)
+        Set-Acl -path $Path -AclObject $Acl -Verbose
+    }
+}
+
+if ($Continue1 -eq "N" -eq "n"){Exit}
