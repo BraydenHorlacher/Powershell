@@ -13,8 +13,8 @@ Clear-Host
 
 $path = Read-Host -prompt "Where do you want to create the folders? (Copy and Paste the link here)"
 
-# Open file dialog
-# Load Windows Forms
+<# Open file dialog
+   Load Windows Forms #>
 [System.Reflection.Assembly]::LoadWithPartialName("System.windows.forms") | Out-Null
 
 # Create and show open file dialog
@@ -26,9 +26,9 @@ $dialog.ShowDialog() | Out-Null
 # Get file path
 $CSVFile = $dialog.FileName
 
-# Import file into variable
-# Lets make sure the file path was valid
-# If the file path is not valid, then exit the script
+<# Import file into variable
+ Lets make sure the file path was valid
+ If the file path is not valid, then exit the script #>
 if ([System.IO.File]::Exists($CSVFile)) {
     Write-Host "Importing CSV..."
     $Folders = Import-Csv -LiteralPath "$CSVFile"
@@ -37,11 +37,11 @@ if ([System.IO.File]::Exists($CSVFile)) {
     Exit
 }
 
-# Location Where your folders are to be created
+<# Location Where your folders are to be created #>
 
 Set-Location "$path"
 
-# Create Folders from CSV ensure you have a heading of "Name" and "ID" in your CSV file
+<# Create Folders from CSV ensure you have a heading of "Name" and "ID" in your CSV file #>
  
 ForEach ($Folder in $Folders) { 
  
@@ -51,6 +51,8 @@ New-Item "$($Folder.LastName) $($Folder.FirstName) - $($Folder.ID)" -type direct
 Write-Output "-------------------------------------------------------------------"
 Write-Output "------------------------Folder Permissions-------------------------"
 Write-Output "-------------------------------------------------------------------"
+
+<# Sets the permissions for the folders that where created above #>
 
 $Continue1 = Read-Host -prompt "Do you want to automatically assign user access permissions to these folders? (Permissions set are modify permissions)"
 if ($Continue1 -eq "Y" -eq "y") {
