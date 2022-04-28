@@ -42,7 +42,7 @@ New-ADUser -Name "$User $Lastname" -GivenName "$User" -Surname "$Lastname" -SamA
 Set-ADUser -Identity "$User $lastname" -EmailAddress "$Initial.$Lastname@$Domain"
 
 #Finds the AD User to verify creation
-Get-ADUser -identity "$User $Lastname"
+Get-ADUser -identity "$Lastname$Initial"
 
 #Used to find if the user is a teacher
 $Teacher = Read-Host -Prompt "Is this user a Teacher / Staff Member? (Y or N)"
