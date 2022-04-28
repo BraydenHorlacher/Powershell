@@ -39,7 +39,7 @@ if($password = "") {
 New-ADUser -Name "$User $Lastname" -GivenName "$User" -Surname "$Lastname" -SamAccountName "$Lastname$Initial" -UserPrincipalName "$Initial.$Lastname@$Domain" -AccountPassword (ConvertTo-SecureString -AsPlainText "$Password" -Force) -Enabled $true -ChangePasswordAtLogon $true -path $OU
 
 #Sets user email address in AD
-Set-ADUser -Identity "$User $lastname" -EmailAddress "$Initial.$Lastname@$Domain"
+Set-ADUser -Identity "$Lastname$Initial" -EmailAddress "$Initial.$Lastname@$Domain"
 
 #Finds the AD User to verify creation
 Get-ADUser -identity "$Lastname$Initial"
@@ -49,15 +49,15 @@ $Teacher = Read-Host -Prompt "Is this user a Teacher / Staff Member? (Y or N)"
 
 #Adds AD User to default groups (DOES NOT NEED DOMAIN USERS GROUP!!! This automatically gets added when the account has been created)
 if ($Teacher -eq "y" -eq "Y") {
-  Add-ADGroupMember -Identity 'All Teachers' -Members "$User $Lastname"
-  Add-ADGroupMember -Identity LIC_EnterpriseMobilitySecurityE3 -Members "$User $Lastname"
-  Add-ADGroupMember -Identity LIC_GWfEPlusStaff -Members "$User $Lastname"
-  Add-ADGroupMember -Identity LIC_MinecraftEducationEditionFaculty -Members "$User $Lastname"
-  Add-ADGroupMember -Identity LIC_Office365A3forFaculty -Members "$User $Lastname"
-  Add-ADGroupMember -Identity LIC_Windows10EnterpriseA3forFaculty -Members "$User $Lastname"
-  Add-ADGroupMember -Identity 'N4L VPN Clients' -Members "$User $Lastname"
-  Add-ADGroupMember -Identity Teachers -Members "$User $Lastname"
-  Add-ADGroupMember -Identity Staff -Members "$User $Lastname" 
+  Add-ADGroupMember -Identity 'All Teachers' -Members "$Lastname$Initial"
+  Add-ADGroupMember -Identity LIC_EnterpriseMobilitySecurityE3 -Members "$Lastname$Initial"
+  Add-ADGroupMember -Identity LIC_GWfEPlusStaff -Members "$Lastname$Initial"
+  Add-ADGroupMember -Identity LIC_MinecraftEducationEditionFaculty -Members "$Lastname$Initial"
+  Add-ADGroupMember -Identity LIC_Office365A3forFaculty -Members "$Lastname$Initial"
+  Add-ADGroupMember -Identity LIC_Windows10EnterpriseA3forFaculty -Members "$Lastname$Initial"
+  Add-ADGroupMember -Identity 'N4L VPN Clients' -Members "$Lastname$Initial"
+  Add-ADGroupMember -Identity Teachers -Members "$Lastname$Initial"
+  Add-ADGroupMember -Identity Staff -Members "$Lastname$Initial" 
 }
 
 #Doesn't add the user to anygroups
