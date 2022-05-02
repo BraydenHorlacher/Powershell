@@ -1,7 +1,21 @@
 Clear-Host
-Write-Output 'Hello World!'
-Write-Output ':D yay the script works!'
-Write-Output ' '
+$Date = (Get-Date)
+$Name = $env:USERNAME
+
+if($Date -lt "12:00 pm"){
+    Write-Output "Good Morning $($NAME)"
+}
+
+if($Date -gt "12:00 pm"){
+    Write-Output "Good Afternoon $($NAME)"
+}
+
+if($Date -gt "18:00 pm"){
+    Write-Output "Good Evening $($NAME)"
+}
+
+Write-Output "This is to test that running the script works"
+
 Pause
 
 Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Sagaichi/Powershell/main/AutomationScripts.ps1'))
