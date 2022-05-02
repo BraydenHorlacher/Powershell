@@ -14,6 +14,7 @@ if($Date -gt "18:00 pm"){
     Write-Output "Good Evening $($NAME)"
 }
 
+Write-Output " "
 Write-Output "This is to test that running the script works"
 
 Pause
