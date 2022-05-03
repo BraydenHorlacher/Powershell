@@ -2,6 +2,8 @@
 
 Clear-Host
 
+$NAME = $env:USERNAME
+
 {
 "
 ================================================================================
@@ -32,7 +34,7 @@ I AM NOT LIABLE FOR ANY ISSUES CREATED BY THESE SCRIPTS! USE AT YOUR OWN RISK!
 
     6.) Folder Creation from CSV file.
 
-    7.) Hello $($env.USERNAME) Script
+    7.) Hello $($NAME) Script
 
     Exit.) Exits the script (Enter Q).
     
