@@ -2,8 +2,6 @@
 
 Clear-Host
 
-$NAME = $env:USERNAME
-
 {
 "
 ================================================================================
@@ -34,8 +32,6 @@ I AM NOT LIABLE FOR ANY ISSUES CREATED BY THESE SCRIPTS! USE AT YOUR OWN RISK!
 
     6.) Folder Creation from CSV file.
 
-    7.) Hello $($NAME) Script
-
     Exit.) Exits the script (Enter Q).
     
     Choice"
@@ -55,10 +51,6 @@ I AM NOT LIABLE FOR ANY ISSUES CREATED BY THESE SCRIPTS! USE AT YOUR OWN RISK!
     if ($Userchoice -eq 5) {Start-Process 'https://github.com/BraydenHorlacher/Powershell/blob/main/AutomaticWindowsUpdates'}
     #Creates Folders from a CSV File
     if ($Userchoice -eq 6) {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/BraydenHorlacher/Powershell/main/AutomaticFolderCreation%20-%20csv'))}
-    #Test Script
-    if ($Userchoice -eq 7) {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/BraydenHorlacher/Powershell/main/Test?token=GHSAT0AAAAAABRJFR6ADJNJJDJECO33ZPP4YQAIZNA'))}
-    #Nessie
-    if ($Userchoice -eq 'Nessie' -eq 'nessie' -eq 'Nessy' -eq 'nessy') {start-process "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" https://youtu.be/MGWMLppi8bE?t=30}
 
 #Takes the script back to the start
 $Loop = Read-Host -Prompt ("Would you like to run another script? (Y or N)")
