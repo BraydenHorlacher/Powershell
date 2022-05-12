@@ -33,7 +33,7 @@ if ($Confirm -eq "y" -eq "Y"){
             }
         }
     }
-}    
+    
 if ($Confirm -eq "n" -eq "N"){
     foreach ($user in $users) {
         $UserDN = $user.DistinguishedName
