@@ -28,7 +28,7 @@ if ($Confirm -eq "y" -eq "Y"){
         $UserDN = $user.DistinguishedName
         Get-ADGroup -LDAPFilter "(member=$UserDN)" | foreach-object {
             if ($_.name -ne $ExceptGroup) {
-                Write-Host Removing $user.SamAccountName from group $_.name
+                Write-Host Removing $user.SamAccountName from group $_.name > Log.txt
                 Remove-ADGroupMember -identity $_.name -Member $UserDN -Confirm:$True
             }
         }
@@ -39,7 +39,7 @@ if ($Confirm -eq "n" -eq "N"){
         $UserDN = $user.DistinguishedName
         Get-ADGroup -LDAPFilter "(member=$UserDN)" | foreach-object {
             if ($_.name -ne $ExceptGroup) {
-                Write-Host Removing $user.SamAccountName from group $_.name
+                Write-Host Removing $user.SamAccountName from group $_.name > Log.txt
                 Remove-ADGroupMember -identity $_.name -Member $UserDN -Confirm:$False
             }
         }
@@ -49,14 +49,4 @@ if ($Confirm -eq "n" -eq "N"){
 Write-Host Organizational Unit: $OU
 Write-Host Confirm: $Confirm
 
-$LOG = Read-Host -prompt "Would you like to create a log file? [Y/N]"
-
-# Creates a log file
-if ($LOG -eq "Y" -eq "y"){
-    cd "Desktop"
-    Mkdir Log
-    cd "Log"
-    DIR > log.txt
-} else {
-    pause
-}
+pause
