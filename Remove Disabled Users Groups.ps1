@@ -4,7 +4,7 @@ Import-Module ActiveDirectory
 Clear-Host
 "This script removes usergroups from enabled or disabled users in your Active Directory"
 ""
-$Continue = Read-Host -Prompt "Do you want to continue running this script? (Y or N)"
+$Continue = Read-Host -Prompt "Do you want to continue running this script? [Y/N]"
 if ($continue -eq "Y" -eq "y") {$null; Clear-Host}
 if ($Continue -eq "N" -eq "n") {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/BraydenHorlacher/Powershell/main/AutomationScripts.ps1'))}
 
@@ -22,7 +22,7 @@ if($ExceptGroup = "") {
 
 $users = Get-ADUser -SearchBase $OU -Filter {Enabled -eq $False}
 
-$Confirm = Read-Host -Prompt "Do you want to manually check off each group removal for the users in this OU?"
+$Confirm = Read-Host -Prompt "Do you want to manually check off each group removal for the users in this OU? [Y/N]"
 if ($Confirm -eq "y" -eq "Y"){
     foreach ($user in $users) {
         $UserDN = $user.DistinguishedName
@@ -48,5 +48,8 @@ if ($Confirm -eq "n" -eq "N"){
 
 Write-Host Organizational Unit: $OU
 Write-Host Confirm: $Confirm
+
+
+$Log = New-Item 
 
 pause
