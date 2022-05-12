@@ -24,7 +24,7 @@ $users = Get-ADUser -SearchBase $OU -Filter {Enabled -eq $False}
 
 $Confirm = Read-Host -Prompt "Do you want to manually check off each group removal for the users in this OU? [Y/N]"
 if ($Confirm -eq "y" -eq "Y"){
-    foreach ($user in $users) { >> Log.txt
+    foreach ($user in $users) 
         $UserDN = $user.DistinguishedName
         Get-ADGroup -LDAPFilter "(member=$UserDN)" | foreach-object {
             if ($_.name -ne $ExceptGroup) {
@@ -35,7 +35,7 @@ if ($Confirm -eq "y" -eq "Y"){
     }
 }    
 if ($Confirm -eq "n" -eq "N"){
-    foreach ($user in $users) { >> Log.txt
+    foreach ($user in $users) {
         $UserDN = $user.DistinguishedName
         Get-ADGroup -LDAPFilter "(member=$UserDN)" | foreach-object {
             if ($_.name -ne $ExceptGroup) {
