@@ -49,7 +49,12 @@ if ($Confirm -eq "n" -eq "N"){
 Write-Host Organizational Unit: $OU
 Write-Host Confirm: $Confirm
 
-
-$Log = New-Item 
-
-pause
+# Creates a log file
+if ($LOG -eq "Y" -eq "y"){
+    cd "Desktop"
+    Mkdir Log
+    cd "Log"
+    DIR > log.txt
+} else {
+    pause
+}
