@@ -49,6 +49,8 @@ if ($Confirm -eq "n" -eq "N"){
 Write-Host Organizational Unit: $OU
 Write-Host Confirm: $Confirm
 
+$LOG = Read-Host -prompt "Would you like to create a log file? [Y/N]"
+
 # Creates a log file
 if ($LOG -eq "Y" -eq "y"){
     cd "Desktop"
