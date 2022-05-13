@@ -28,9 +28,8 @@ if ($Confirm -eq "y" -eq "Y"){
         $UserDN = $user.DistinguishedName
         Get-ADGroup -LDAPFilter "(member=$UserDN)" | foreach-object {
             if ($_.name -ne $ExceptGroup) { 
-                Write-Host Removing $user.SamAccountName from group $_.name
+                Write-Host Removing $user.SamAccountName from group $_.name >> Log.txt
                 Remove-ADGroupMember -identity $_.name -Member $UserDN -Confirm:$True
-                >> Log.txt
             }
         }
     }
@@ -41,9 +40,8 @@ if ($Confirm -eq "n" -eq "N"){
         $UserDN = $user.DistinguishedName
         Get-ADGroup -LDAPFilter "(member=$UserDN)" | foreach-object {
             if ($_.name -ne $ExceptGroup) {
-                Write-Host Removing $user.SamAccountName from group $_.name 
+                Write-Host Removing $user.SamAccountName from group $_.name >> log.txt
                 Remove-ADGroupMember -identity $_.name -Member $UserDN -Confirm:$False
-                >> Log.txt
             }
         }
     }
