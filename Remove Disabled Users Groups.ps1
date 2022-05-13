@@ -29,7 +29,6 @@ if ($Confirm -eq "y" -eq "Y"){
         Get-ADGroup -LDAPFilter "(member=$UserDN)" | foreach-object {
             if ($_.name -ne $ExceptGroup) { 
                 Write-Host Removing $user.SamAccountName from group $_.name
-                Write-Output Removed $user.SamAccountName from group $_.name >> log.txt
                 Remove-ADGroupMember -identity $_.name -Member $UserDN -Confirm:$True
             }
         }
@@ -42,12 +41,14 @@ if ($Confirm -eq "n" -eq "N"){
         Get-ADGroup -LDAPFilter "(member=$UserDN)" | foreach-object {
             if ($_.name -ne $ExceptGroup) {
                 Write-Host Removing $user.SamAccountName from group $_.name
-                Write-Output Removed $user.SamAccountName from group $_.name >> log.txt
                 Remove-ADGroupMember -identity $_.name -Member $UserDN -Confirm:$False
             }
         }
     }
 }
+
+New-Item C:\Users\%USERNAME%\Desktop\Log.txt
+Set-Content C:\Users\%USERNAME%\Desktop\Log.txt -Value "Removed $($user.SamAccountName) from group $($_.name)"
 
 Write-Host Organizational Unit: $OU
 Write-Host Confirm: $Confirm
