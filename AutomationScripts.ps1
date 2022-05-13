@@ -45,8 +45,6 @@ I AM NOT LIABLE FOR ANY ISSUES CREATED BY THESE SCRIPTS! USE AT YOUR OWN RISK!
     if ($Userchoice -eq 2) {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/BraydenHorlacher/Powershell/main/User%20Creation%20Script.ps1'))}
     #Password Change via CSV script
     if ($Userchoice -eq 3) {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/BraydenHorlacher/Powershell/main/Password%20Change%20via%20CSV.ps1'))}
-    #Remove User Groups Script
-    if ($Userchoice -eq 4) {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/BraydenHorlacher/Powershell/main/Remove%20Disabled%20Users%20Groups.ps1'))}
     #Auto windows update script
     if ($Userchoice -eq 5) {Start-Process 'https://github.com/BraydenHorlacher/Powershell/blob/main/AutomaticWindowsUpdates'}
     #Creates Folders from a CSV File
