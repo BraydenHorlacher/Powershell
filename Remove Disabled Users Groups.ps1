@@ -47,8 +47,11 @@ if ($Confirm -eq "n" -eq "N"){
     }
 }
 
+
 New-Item C:\Users\$env:USERNAME\Desktop\Log.txt
-Set-Content C:\Users\$env:USERNAME\Desktop\Log.txt -Value "Removed $($user.SamAccountName) from group $($_.name)"
+    foreach ($user in $users){
+        Set-Content C:\Users\$env:USERNAME\Desktop\Log.txt -Value "Removed $($user.SamAccountName) from group $($_.name)"
+    }
 
 Write-Host Organizational Unit: $OU
 Write-Host Confirm: $Confirm
