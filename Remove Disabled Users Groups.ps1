@@ -26,7 +26,12 @@ $Confirm = Read-Host -Prompt "Do you want to manually check off each group remov
 $Log = Read-Host -Prompt "Do you want to create a log for thsi "
 
 if ($Log -eq "Y" -eq "y") {
-    Write-Output "Removed $($user.SamAccountName) from group $($_.name)" >> Log.txt
+    foreach ($user in $users){
+        $UserDN = $user.DistinguishedName
+        Get-ADGroup -LDAPFilter "(member=$UserDN)" | foreach-object {
+        Write-Output "Removed $($user.SamAccountName) from group $($_.name)" >> Log.txt
+        }
+    }
 } else {
     $null
 }
