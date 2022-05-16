@@ -23,13 +23,15 @@ if($ExceptGroup = "") {
 $users = Get-ADUser -SearchBase $OU -Filter {Enabled -eq $False}
 
 $Confirm = Read-Host -Prompt "Do you want to manually check off each group removal for the users in this OU? [Y/N]"
-$Log = Read-Host -Prompt "Do you want to create a log for thsi "
+$Log = Read-Host -Prompt "Do you want to create a log? [Y/N]"
 
-if ($Log -eq "Y" -eq "y") {
+if ($Confirm -eq "y" -eq "Y"){
     foreach ($user in $users){
         $UserDN = $user.DistinguishedName
         Get-ADGroup -LDAPFilter "(member=$UserDN)" | foreach-object {
-        Write-Output "Removed $($user.SamAccountName) from group $($_.name)" >> Log.txt
+            if ($_.name -ne $ExceptGroup) { 
+                Write-Output Removed $user.SamAccountName from group $_.name
+            }
         }
     }
 } else {
