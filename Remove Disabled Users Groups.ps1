@@ -30,7 +30,7 @@ if ($Log -eq "y" -eq "Y"){
         $UserDN = $user.DistinguishedName
         Get-ADGroup -LDAPFilter "(member=$UserDN)" | foreach-object {
             if ($_.name -ne $ExceptGroup) { 
-                Write-Output Removed $user.SamAccountName from group $_.name >> RemovedGroupsLog.txt
+                Write-Output "Removed $($user.SamAccountName) from group $($_.name)" >> RemovedGroupsLog.txt
             }
         }
     }
