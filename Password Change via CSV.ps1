@@ -1,7 +1,7 @@
 ﻿Clear-Host
 "This script bulk changes Users passwords from a .CSV file in your Active Directory"
 ""
-$Continue = Read-Host -Prompt "Do you want to continue running this script? (Y or N)"
+$Continue = Read-Host -Prompt "Do you want to continue running this script? [Y/N]"
 if ($continue -eq "Y" -eq "y") {$null; Clear-Host}
 if ($Continue -eq "N" -eq "n") {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/BraydenHorlacher/Powershell/main/AutomationScripts.ps1'))}
 
@@ -33,7 +33,7 @@ if ([System.IO.File]::Exists($CSVFile)) {
     Exit
 }
 
-$Confirm = read-host -Prompt "Do you want to check off each user? [Y] or [N]"
+$Confirm = read-host -Prompt "Do you want to check off each user? [Y/N]"
 if ($Confirm -eq "y" -eq "Y") { 
     foreach ($Account in $Resetpassword) {
         $Account.SAMAccountName

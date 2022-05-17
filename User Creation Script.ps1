@@ -1,7 +1,7 @@
 Clear-Host
 "This script Creates Users in your Active Directory"
 ""
-$Continue = Read-Host -Prompt "Do you want to continue running this script? (Y or N)"
+$Continue = Read-Host -Prompt "Do you want to continue running this script? [Y/N]"
 if ($continue -eq "Y" -eq "y") {$null; Clear-Host}
 if ($Continue -eq "N" -eq "n") {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/BraydenHorlacher/Powershell/main/AutomationScripts.ps1'))}
 
@@ -45,7 +45,7 @@ Set-ADUser -Identity "$Lastname$Initial" -EmailAddress "$Initial.$Lastname@$Doma
 Get-ADUser -identity "$Lastname$Initial"
 
 #Used to find if the user is a teacher
-$Teacher = Read-Host -Prompt "Is this user a Teacher / Staff Member? (Y or N)"
+$Teacher = Read-Host -Prompt "Is this user a Teacher / Staff Member? [Y/N]"
 
 #Adds AD User to default groups (DOES NOT NEED DOMAIN USERS GROUP!!! This automatically gets added when the account has been created)
 if ($Teacher -eq "y" -eq "Y") {

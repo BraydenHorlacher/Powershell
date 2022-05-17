@@ -5,7 +5,7 @@ Clear-Host
 
 "This script adds users from a .CSV file to AD Groups"
 
-$Continue = Read-Host -Prompt "Do you want to continue running this script? (Y or N)"
+$Continue = Read-Host -Prompt "Do you want to continue running this script? [Y/N]"
 if ($continue -eq "Y" -eq "y") {$null; Clear-Host}
 if ($Continue -eq "N" -eq "n") {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/BraydenHorlacher/Powershell/main/AutomationScripts.ps1'))}
 

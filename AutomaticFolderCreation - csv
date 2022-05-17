@@ -5,7 +5,7 @@ Clear-Host
 
 "This script creates folders from a .CSV file"
 
-$Continue = Read-Host -Prompt "Do you want to continue running this script? (Y or N)"
+$Continue = Read-Host -Prompt "Do you want to continue running this script? [Y/N]"
 if ($continue -eq "Y" -eq "y") {$null; Clear-Host}
 if ($Continue -eq "N" -eq "n") {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/BraydenHorlacher/Powershell/main/AutomationScripts.ps1'))}
 
@@ -54,7 +54,7 @@ Write-Output "------------------------------------------------------------------
 
 <# Sets the permissions for the folders that where created above #>
 
-$Continue1 = Read-Host -prompt "Do you want to automatically assign user access permissions to these folders? (Permissions set are modify permissions)"
+$Continue1 = Read-Host -prompt "Do you want to automatically assign user access permissions to these folders? (Permissions set are modify permissions) [Y/N]"
 if ($Continue1 -eq "Y" -eq "y") {
     foreach ($Folder in $Folders) {
         $Path = "$($Folder.LastName) $($Folder.FirstName) - $($Folder.ID)"

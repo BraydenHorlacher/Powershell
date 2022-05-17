@@ -6,7 +6,7 @@ https://www.alitajran.com/wp-content/uploads/spreadsheets/NewUsersSent.csv
 "
 
 #Allows the user to continue use of the script
-$Continue = Read-Host -Prompt "Do you want to continue running this script? (Y or N)"
+$Continue = Read-Host -Prompt "Do you want to continue running this script? [Y/N]"
 if ($Continue -eq "Y" -eq "y") {$null; Clear-Host}
 if ($Continue -eq "N" -eq "n") {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/BraydenHorlacher/Powershell/main/AutomationScripts.ps1'))}
 
