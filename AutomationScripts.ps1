@@ -36,7 +36,7 @@ I AM NOT LIABLE FOR ANY ISSUES CREATED BY THESE SCRIPTS! USE AT YOUR OWN RISK!
     
     Choice"
 
-    
+# Scripts  
     #Quits the script
     if ($Userchoice -eq 'q' -eq 'Q') {Exit} 
     #User Creation via CSV script
@@ -51,8 +51,11 @@ I AM NOT LIABLE FOR ANY ISSUES CREATED BY THESE SCRIPTS! USE AT YOUR OWN RISK!
     if ($Userchoice -eq 5) {Start-Process 'https://github.com/BraydenHorlacher/Powershell/blob/main/AutomaticWindowsUpdates'}
     #Creates Folders from a CSV File
     if ($Userchoice -eq 6) {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/BraydenHorlacher/Powershell/main/AutomaticFolderCreation%20-%20csv'))}
+    
+    
+# Game's
     #Number Game
-    if ($Userchoice -eq 7) {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/BraydenHorlacher/Powershell/main/NumberGame.ps1'))}
+    if ($Userchoice -eq "Game") {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/BraydenHorlacher/Powershell/main/NumberGame.ps1'))}
     
 #Takes the script back to the start
 $Loop = Read-Host -Prompt ("Would you like to run another script? [Y/N]")
