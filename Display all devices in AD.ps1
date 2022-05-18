@@ -1,8 +1,16 @@
-# Imports AD
-#requires -module ActiveDirectory
+Clear-Host
 
 # What the script does
 Write-Output "This script displays all enabled Computers with their descriptions"
+
+$Continue = Read-Host -Prompt "Do you want to continue running this script? [Y/N]"
+if ($continue -eq "Y" -eq "y") {$null; Clear-Host}
+if ($Continue -eq "N" -eq "n") {Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/BraydenHorlacher/Powershell/main/AutomationScripts.ps1'))}
+
+Clear-Host
+
+# Imports AD
+#requires -module ActiveDirectory
 
 # Var's
 $Confirm = Read-Host -Prompt "Do you want to search for Enabled or Disabled devices? or both? {[E] Enabled | [D] Disabled | [B] Both}"
