@@ -32,7 +32,7 @@ I AM NOT LIABLE FOR ANY ISSUES CREATED BY THESE SCRIPTS! USE AT YOUR OWN RISK!
 
     6.) Folder Creation from CSV file.
 
-    7.) Display devices in AD 
+    7.) Display devices in AD and outputs them to a CSV file.
 
     Exit.) Exits the script (Enter Q).
     
