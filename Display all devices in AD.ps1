@@ -19,13 +19,13 @@ $Log = Read-Host -Prompt "Would you like to create a log for all the devices? [Y
 # Code
 if($Log -eq "Y"){
     if($Confirm -eq "E" -eq "Enabled"){
-        Get-ADComputer -Filter {Enabled -eq $True} -Property * | Select-Object Name,OperatingSystem,ipv4Address,Enabled | Export-CSV EnabledDevicesLog.csv -NoTypeInformation -Encoding UTF8
+        Get-ADComputer -Filter {Enabled -eq $True} -Property * | Select-Object Name,OperatingSystem,ipv4Address,Enabled,Description | Export-CSV EnabledDevicesLog.csv -NoTypeInformation -Encoding UTF8
     }
     if($Confirm -eq "D" -eq "Disabled"){
-        Get-ADComputer -Filter {Enabled -eq $False} -Property * | Select-Object Name,OperatingSystem,ipv4Address,Enabled | Export-CSV DisabledDevicesLog.csv -NoTypeInformation -Encoding UTF8
+        Get-ADComputer -Filter {Enabled -eq $False} -Property * | Select-Object Name,OperatingSystem,ipv4Address,Enabled,Description | Export-CSV DisabledDevicesLog.csv -NoTypeInformation -Encoding UTF8
     }
     if($Confirm -eq "B" -eq "Both"){
-        Get-ADComputer -Filter * -Property * | Select-Object Name,OperatingSystem,ipv4Address,Enabled | Export-CSV AllDevicesLog.csv -NoTypeInformation -Encoding UTF8
+        Get-ADComputer -Filter * -Property * | Select-Object Name,OperatingSystem,ipv4Address,Enabled,Description | Export-CSV AllDevicesLog.csv -NoTypeInformation -Encoding UTF8
     }
 } else{
     if($Confirm -eq "E" -eq "Enabled"){
